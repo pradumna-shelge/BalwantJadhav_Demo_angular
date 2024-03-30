@@ -1,0 +1,19 @@
+<!-- profile.component.html -->
+
+<div class="container mt-5">
+    <h2>Profile</h2>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text"><strong>Photo:</strong> <img [src]="registrationData.photo" alt="" srcset="">{{registrationData.photo}}</p>
+            <p class="card-text"><strong>Age:</strong> {{ registrationData.age }}</p>
+            <p class="card-text"><strong>Interest:</strong> {{ registrationData.interest }}</p>
+            <p class="card-text"><strong>Address Type:</strong> {{ registrationData.addressType }}</p>
+            <p class="card-text"><strong>Address 1:</strong> {{ registrationData.address1 }}</p>
+            <p class="card-text"><strong>Address 2:</strong> {{ registrationData.address2 }}</p>
+            <p class="card-text"><strong>Company Address 1:</strong> {{ registrationData.companyAddress1 }}</p>
+            <p class="card-text"><strong>Company Address 2:</strong> {{ registrationData.companyAddress2 }}</p>
+            <p class="card-text"><strong>First Name:</strong> {{ registrationData.firstName }}</p>
+            <!-- Add more fields as needed -->
+        </div>
+    </div>
+</div>

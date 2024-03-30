@@ -1,0 +1,61 @@
+<!-- register.component.html -->
+<div class="container mt-5">
+    <h2>Register</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="submitRegistrationForm()">
+        <div class="mb-3">
+            <label for="photo" class="form-label">Upload a Photo (310x325 px):</label>
+            <input type="file" formControlName="photo" class="form-control" id="photo" accept="image/*">
+        </div>
+        
+        <div class="mb-3">
+            <label for="age" class="form-label">Select Age:</label>
+            <input type="range" formControlName="age" class="form-range" id="age" min="18" max="100">
+        </div>
+        
+        <div class="mb-3">
+            <label for="interest" class="form-label">Interest:</label>
+            <input type="text" formControlName="interest" class="form-control" id="interest" placeholder="Type your interest">
+        </div>
+        
+        <div class="mb-3">
+            <label for="addressType" class="form-label">Address:</label>
+            <select formControlName="addressType" class="form-select" id="addressType">
+                <option value="home">Home</option>
+                <option value="company">Company</option>
+            </select>
+        </div>
+        
+        <div *ngIf="addressType?.value === 'home'">
+            <div class="mb-3">
+                <label for="address1" class="form-label">Address 1:</label>
+                <input type="text" formControlName="address1" class="form-control" id="address1">
+            </div>
+            <div class="mb-3">
+                <label for="address2" class="form-label">Address 2:</label>
+                <input type="text" formControlName="address2" class="form-control" id="address2">
+            </div>
+        </div>
+        
+        <div *ngIf="addressType?.value === 'company'">
+            <div class="mb-3">
+                <label for="companyAddress1" class="form-label">Company Address 1:</label>
+                <input type="text" formControlName="companyAddress1" class="form-control" id="companyAddress1">
+            </div>
+            <div class="mb-3">
+                <label for="companyAddress2" class="form-label">Company Address 2:</label>
+                <input type="text" formControlName="companyAddress2" class="form-control" id="companyAddress2">
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name:</label>
+            <input type="text" formControlName="firstName" class="form-control" id="firstName">
+            <div *ngIf="registrationForm.get('firstName')?.invalid && (registrationForm.get('firstName')?.dirty || registrationForm.get('firstName')?.touched)" class="text-danger">
+                <div *ngIf="registrationForm.get('firstName')?.errors?.['required']">First Name is required.</div>
+                <div *ngIf="registrationForm.get('firstName')?.errors?.['pattern']">First Name must contain only alphabetic characters (max 20 characters).</div>
+            </div>
+        </div>
+        
+        <button  class="btn-close" data-bs-dismiss="modal" aria-label="Close" type="submit" class="btn btn-primary" [disabled]="this.registrationForm.invalid">Register</button>
+    </form>
+</div>
